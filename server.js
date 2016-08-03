@@ -9,10 +9,19 @@ app.get("/:date", function(req, res){
 	else
 		date = new Date(date);
 
-	var text = {
-		unix: date.getTime(),
-		natural: date.toDateString()
+	if (date){
+		var text = {
+			unix: date.getTime(),
+			natural: date.toDateString()
+		};
+	} else {
+		var text = {
+			unix: null,
+			natural: null
+		};
 	}
+
+	
 
 	res.end(JSON.stringify(text));
 });
